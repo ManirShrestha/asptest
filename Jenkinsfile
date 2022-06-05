@@ -38,7 +38,7 @@ pipeline {
         }
         stage('DockerBuild') {
             steps {
-                bat 'docker build .'
+                bat 'docker build -t MyWebApp/MyWebApp .'
             }
         }
     }
