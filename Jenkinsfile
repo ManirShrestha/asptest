@@ -31,5 +31,15 @@ pipeline {
                 bat "${dotnet} build MyWebApp.csproj --configuration Release"
             }
         }
+        stage('Publish') {
+            steps {
+                bat "${dotnet} publish MyWebApp.csproj --configuration Release"
+            }
+        }
+        stage('DockerBuild') {
+            steps {
+                bat 'docker build .'
+            }
+        }
     }
 }
