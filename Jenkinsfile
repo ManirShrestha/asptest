@@ -10,12 +10,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/ManirShrestha/asptest.git', branch: 'master'
-            }
-        }
-
         stage('Restore packages') {
             steps {
                 bat "${dotnet} restore MyWebApp.csproj"
