@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    triggers {
+        pollSCM 'H * * * *'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/ManirShrestha/asptest.git', branch: 'master'
+            }
+        }
+
+        stage('Restore packages') {
+            steps {
+                bat 'dotnet restore MyWebApp.csproj'
+            }
+        }
+        stage('Clean') {
+            steps {
+                bat 'dotnet clean MyWebApp.csproj'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'dotnet build MyWebApp.csproj --configuration Release'
+            }
+        }
+    }
+}
