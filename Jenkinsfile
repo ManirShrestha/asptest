@@ -18,17 +18,17 @@ pipeline {
 
         stage('Restore packages') {
             steps {
-                bat 'dotnet restore MyWebApp.csproj'
+                bat 'C:\\Program Files\\dotnet\\dotnet.exe restore MyWebApp.csproj'
             }
         }
         stage('Clean') {
             steps {
-                bat 'dotnet clean MyWebApp.csproj'
+                bat 'C:\\Program Files\\dotnet\\dotnet.exe clean MyWebApp.csproj'
             }
         }
         stage('Build') {
             steps {
-                bat 'dotnet build MyWebApp.csproj --configuration Release'
+                bat 'C:\\Program Files\\dotnet\\dotnet.exe build MyWebApp.csproj --configuration Release'
             }
         }
     }
